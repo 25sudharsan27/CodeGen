@@ -1,0 +1,117 @@
+
+.chat-container{
+    display:flex;
+    flex-direction: column;
+    gap:15px;
+}
+.your-chat p3{
+    font-family: 'Poppins', sans-serif;
+    color:#353957;
+    line-height: 25px;
+    display:flex;
+    flex-direction: column;
+}
+.your-chat p5{
+    font-family: 'Poppins', sans-serif;
+    color:#353957;
+    font-size:12px;
+}
+.your-cont{
+    width:100%;
+    display:flex;
+    justify-content: right;
+}
+.your-chat{
+    border:1px solid rgb(224, 224, 224);
+    background-color: rgb(230, 238, 255);
+    padding:13px 17px;
+    border-radius:13px;
+    max-width: 600px;
+    align-self:right;
+}
+.your-cont2{
+    width:100%;
+    display:flex;
+    justify-content: left;
+}
+.your-explanation{
+    padding:13px 17px;
+    border-radius:13px;
+    max-width: 700px;
+}
+.your-explanation p3{
+    line-height: 32px;
+}
+
+.your-body{
+    display:flex;
+    gap:20px;
+    /* box-sizing: border-box; */
+}
+.file-card{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    width:400px;
+    height:400px;
+    box-sizing: border-box;
+    padding:15px;
+    background-color: #202336;
+    border-radius:13px;
+}
+.file-card-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.file-card-header h3{
+    color:white;
+    margin:0px;
+}
+.file-card-header-right{
+    display:flex;
+    gap:10px;
+}
+.file-card-button{
+    font-family: 'Poppins', sans-serif;
+    color:white;
+    background-color: #353957;
+    border-radius:8px;
+    border:none;
+    padding:5px 10px;
+}
+.file-card-max-button{
+    background-color: #75F7CC;
+    border-radius: 50%;
+    border:none;
+    padding:5px 9px;
+}
+.file-card-body{
+    padding:15px;
+    background-color: #353957;
+    border-radius: 12px;
+    scrollbar-width: none;
+    height:100%;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+.file-card-body h3{
+    margin:0px;
+    font-family: 'Poppins', sans-serif;
+    color:white;
+    font-size:13px;
+    line-height: 18px;
+}
+
+.file-card2{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    /* width:400px; */
+    width:100%;
+    height:400px;
+    box-sizing: border-box;
+    padding:15px;
+    background-color: #202336;
+    border-radius:13px;
+}

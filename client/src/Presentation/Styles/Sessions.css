@@ -1,0 +1,77 @@
+.session-container{
+    height:100%;
+    border-radius:12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border:1px solid rgb(212, 212, 212);
+    background-color: #F5F6FC;
+}
+#session-page{
+    padding-top:20px;
+    padding-bottom:50px;
+}
+
+.session-container{
+    display:flex;
+    
+}
+.session-right{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    padding:20px;
+}
+.session-nav{
+    display: flex;
+    align-items: center;
+    padding-bottom:20px;
+    width:100%;
+    justify-content: right;
+}
+.session-nav img{
+    cursor: pointer;
+}
+
+.session-footer{
+    display:flex;
+    box-sizing: border-box;
+    width:100%;
+    background-color: white;
+    padding:10px;
+    border-radius: 10px;
+    border:1px solid rgb(208, 208, 208);
+}
+
+
+.chat-btn2{
+    text-wrap: nowrap;
+    color:#353957;
+    background-color: #F5F6FC;
+    border-radius: 8px;
+    padding:7px 10px;
+    border:none;
+}
+
+.session-footer input{
+    width:100%;
+    border:none;
+    padding-left:10px;
+}
+.session-footer input:focus{
+    outline: none;
+    border:none;
+}
+.session-footer:focus{
+    outline: auto;
+    border:1px solid black;
+}
+
+.session-body{
+    /* margin-top:20px; */
+    /* margin-bottom: 20px; */
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    gap:30px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}

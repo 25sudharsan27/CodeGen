@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const ChatSchema = new mongoose.Schema({
-    sender : String, 
     message : String, 
     timestamp: {type:Date, default:Date.now},
     componentCode:{
         jsx:String,
-        css:String
+        css:String,
+        explanation:String
     }
 })
 
