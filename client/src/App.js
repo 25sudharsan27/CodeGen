@@ -15,7 +15,6 @@ function App() {
         <Route path="/sessions/:sessionId" element={<Session/>}/>
         <Route path="/sessions" element={<Session/>}/>
         <Route path="/session/:sessionId" element={<Sessions/>}/>
-
         <Route path="/*" />
       </Routes>
     </BrowserRouter>
