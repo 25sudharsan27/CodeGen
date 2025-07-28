@@ -15,7 +15,7 @@ app.use(cookieParser());
 
 app.use(
     cors({
-      origin: ["http://localhost:3000"], // ⬅️ Your frontend dev URL
+      origin: ["http://localhost:3000","https://code-gen-rosy.vercel.app"], // ⬅️ Your frontend dev URL
       credentials: true,
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
       allowedHeaders: ["Content-Type", "Authorization"],
