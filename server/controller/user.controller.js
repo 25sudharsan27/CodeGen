@@ -44,6 +44,48 @@ const getchat = async (req,res)=>{
   }
 }
 
+const deleteSession = async (req, res) => {
+    const { sessionId } = req.params;
+    console.log(sessionId+" hi ");
+    if (!req.user_id) {
+      return res.status(401).json({
+        error: true,
+        success: false,
+        message: "User ID was not authenticated"
+      });
+    }
+  
+    try {
+      const deletedSession = await session.findOneAndDelete({
+        _id: sessionId,
+        userId: req.user_id,
+      });
+      
+      if (!deletedSession) {
+        return res.status(404).json({
+          error: true,
+          success: false,
+          message: "Session not found or already deleted"
+        });
+      }
+  
+      return res.status(200).json({
+        error: false,
+        success: true,
+        message: "Deleted successfully"
+      });
+  
+    } catch (err) {
+      console.error("Delete Session Error:", err);
+      return res.status(500).json({
+        error: true,
+        success: false,
+        message: err.message
+      });
+    }
+  };
+  
+
 
 const handlePrompt = async (req, res) => {
     let { sessionId, prompt } = req.body;
@@ -75,4 +117,4 @@ const handlePrompt = async (req, res) => {
   };
   
 
-module.exports = {getSessions,getchat,handlePrompt};
+module.exports = {getSessions,getchat,handlePrompt,deleteSession};

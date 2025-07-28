@@ -6,9 +6,32 @@ import deleteimage from '../Assets/deleteimage.svg';
 import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
-const Sidebar = ({data,sessionId,clearAll}) =>{
+import { deleteSession } from '../../Application/Services/Api';
+const Sidebar = ({setdata,data,sessionId,clearAll}) =>{
     const navigator = useNavigate();
     const [sessions,setSessions] = useState([]);
+    const HandleDelete = async (id)=>{
+        try{
+        const response = await deleteSession(id);
+        if(response){
+
+            if(id===sessionId){
+                navigator("/sessions")
+            }
+            else{
+                setdata((prev)=>{
+                    const newArr = [...prev];
+                    newArr.filter((item)=>{
+                        return item._id!==sessionId 
+                    })
+                    return newArr;
+                })
+            }
+        }
+        }catch(error){
+            alert("something was wrong");
+        }
+    }
     useEffect(() => {
         setSessions(data);
     }, [data]);
@@ -25,11 +48,11 @@ const Sidebar = ({data,sessionId,clearAll}) =>{
                             navigator("/sessions/"+session._id);
                         }} className="session-box" id={sessionId==session._id ? "box-active" : null}>
                             <div className="session-head">
-                                <h3>{session.sessionName.length>15 ? session.sessionName.substring(0,15)+"..." : session.sessionName+"..."}</h3>
+                                <h3>{session?.sessionName &&  session.sessionName.length>15 ? session.sessionName.substring(0,15)+"..." : session.sessionName+"..."}</h3>
                                 <p5>{new Date(session.lastUpdated).toLocaleString()}</p5>
                             </div>
                             <div className="session-btn">
-                                <img src={deleteimage} alt="session button" />
+                                <img onClick={()=>{HandleDelete(session._id)}} src={deleteimage} alt="session button" />
                             </div>
                         </div>
                     )

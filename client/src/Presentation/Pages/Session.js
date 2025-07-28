@@ -13,7 +13,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Model from '../Components/Model';
 
-import { getSessionDetail, getSessions, handlePrompt } from '../../Application/Services/Api';
+import { getSessionDetail, getSessions, handlePrompt, userLogOut } from '../../Application/Services/Api';
 import parseToJSX from '../../Application/Services/Parsing';
 
 const Session = () => {
@@ -155,7 +155,7 @@ const Session = () => {
     const prom = currentPromptRef.current.value;
     currentPromptRef.current.value = "";
     if (response.status === 201) {
-      sessionsData((prev)=>{
+      setsessionsData((prev)=>{
         const newArr= [...prev];
         newArr.unshift({_id : response.data.sessionId,sessionname: (prom.length > 13 ? prom.substring(0,13) : prom) , lastUpdated: response.data.lastUpdated});
         return newArr;
@@ -222,14 +222,25 @@ const Session = () => {
   const clearAll = () => {
     setChatHistory([]);
   }
+  const HandleLogOut = async ()=>{
+    try{
+      const response =await userLogOut();
+      if(response){
+        navigator("/login");
+      }
+    }catch(error){
+      alert(error.message);
+    }
+  }
 
   return (
     <div className="page" id="session-page">
       <div className="session-container">
-        <Sidebar data={sessionsData} sessionId={sessionId} clearAll={clearAll} />
+        <Sidebar setdata={setsessionsData} data={sessionsData} sessionId={sessionId} clearAll={clearAll} />
         <div className="session-right">
           <div className="session-nav">
             <img src={userlogo} alt="user logo" />
+            <button onClick={HandleLogOut} className="input-button" >Logout</button>
           </div>
           <div className="session-body">
             {!sessionId ?
