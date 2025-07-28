@@ -12,7 +12,6 @@ const SignUp = ()=>{
     const HandleSubmit = async (e) =>{
         e.preventDefault();
         try{
-            console.log(e.target);
             const email = emailRef.current.value;
             const password = passwordRef.current.value;
             const confirmpassword = confirmpasswordRef.current.value;
@@ -34,7 +33,6 @@ const SignUp = ()=>{
                 confirmpassword
             })
             const response = await userSignup({email,password});
-            console.log(response);
             if(response?.data?.success){
                 navigator("/login");
             }

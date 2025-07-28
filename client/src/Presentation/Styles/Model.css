@@ -1,0 +1,26 @@
+.model-container{
+    top:0;
+    left:0;
+    right:0;
+    height:100%;
+    width: 100%;
+    padding:35px;
+    position: fixed;
+    box-sizing: border-box;
+    padding-top:20px;
+    padding-bottom:50px;
+}
+.file-card-main{
+    
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    /* width:400px; */
+    /* height:400px; */
+    width:100%;
+    height:100%;
+    box-sizing: border-box;
+    padding:15px;
+    background-color: #202336;
+    border-radius:13px;
+}

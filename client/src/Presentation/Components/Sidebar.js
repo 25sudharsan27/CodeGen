@@ -1,72 +1,17 @@
 import '../Styles/Sidebar.css'
+import { useEffect } from 'react';
 import messagelogo from '../Assets/messagelogo.svg';
 import messagelogo1 from '../Assets/messagelogo1.svg';
 import deleteimage from '../Assets/deleteimage.svg';
+import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
-const Sidebar = () =>{
-    const [sessions,setSessions] = useState([
-        {
-            _id : 1,
-            name : "Complte Code of the REact Js calculator",
-            date : "27/08/2025"
-        },
-        {
-            _id:2,
-            name:"Server side rendering regarding Nest Js ",
-            date : "27/08/2025"
-        },
-        {
-            _id : 1,
-            name : "Complte Code of the REact Js calculator",
-            date : "27/08/2025"
-        },
-        {
-            _id:2,
-            name:"Server side rendering regarding Nest Js ",
-            date : "27/08/2025"
-        },
-        {
-            _id : 1,
-            name : "Complte Code of the REact Js calculator",
-            date : "27/08/2025"
-        },
-        {
-            _id:2,
-            name:"Server side rendering regarding Nest Js ",
-            date : "27/08/2025"
-        },
-        {
-            _id : 1,
-            name : "Complte Code of the REact Js calculator",
-            date : "27/08/2025"
-        },
-        {
-            _id:2,
-            name:"Server side rendering regarding Nest Js ",
-            date : "27/08/2025"
-        },
-        {
-            _id : 1,
-            name : "Complte Code of the REact Js calculator",
-            date : "27/08/2025"
-        },
-        {
-            _id:2,
-            name:"Server side rendering regarding Nest Js ",
-            date : "27/08/2025"
-        },
-        {
-            _id : 1,
-            name : "Complte Code of the REact Js calculator",
-            date : "27/08/2025"
-        },
-        {
-            _id:2,
-            name:"Server side rendering regarding Nest Js ",
-            date : "27/08/2025"
-        },
-    ])
+const Sidebar = ({data,sessionId,clearAll}) =>{
+    const navigator = useNavigate();
+    const [sessions,setSessions] = useState([]);
+    useEffect(() => {
+        setSessions(data);
+    }, [data]);
     return (
         <div className="sidebar-container">
             <div className="sidebar-header">
@@ -76,10 +21,12 @@ const Sidebar = () =>{
             <div className="sidebar-body">
                 {sessions.map((session,index)=>{
                     return (
-                        <div className="session-box">
+                        <div onClick={()=>{
+                            navigator("/sessions/"+session._id);
+                        }} className="session-box" id={sessionId==session._id ? "box-active" : null}>
                             <div className="session-head">
-                                <h3>{session.name.length>15 ? session.name.substring(0,15)+"..." : session.name}</h3>
-                                <p5>{session.date}</p5>
+                                <h3>{session.sessionName.length>15 ? session.sessionName.substring(0,15)+"..." : session.sessionName+"..."}</h3>
+                                <p5>{new Date(session.lastUpdated).toLocaleString()}</p5>
                             </div>
                             <div className="session-btn">
                                 <img src={deleteimage} alt="session button" />
@@ -87,12 +34,11 @@ const Sidebar = () =>{
                         </div>
                     )
                 })
-
                 }
             </div>
-            <div className="sidebar-footer">
+            <div onClick={()=>{clearAll(); navigator("/sessions")}} className="sidebar-footer">
                 <img src={messagelogo1} alt="messagelogo"/>
-                <label className="chat-btn "> New Chat</label>
+                <label onClick={clearAll} className="chat-btn "> New Chat</label>
             </div>
         </div>
     )

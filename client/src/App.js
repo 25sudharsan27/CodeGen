@@ -12,6 +12,7 @@ function App() {
         <Route path="/" />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/sessions/:sessionId" element={<Session/>}/>
         <Route path="/sessions" element={<Session/>}/>
         <Route path="/session/:sessionId" element={<Sessions/>}/>
 

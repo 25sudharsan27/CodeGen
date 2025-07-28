@@ -5,10 +5,13 @@ const connectDB = require('./config/connectDB');
 const userRouter = require("./routes/user.router.js");
 const authRouter = require("./routes/auth.router.js");
 const userAuth = require('./middleware/userAuth.js');
+const cookieParser = require('cookie-parser');
 const app = new express();
 
 
 app.use(express.json());
+
+app.use(cookieParser());
 
 app.use(
     cors({
@@ -22,7 +25,7 @@ app.use(
 
 app.use("/api/auth",authRouter);
 
-// app.use("/api/user",userAuth,userRouter);
+app.use("/api/user",userRouter);
 
 app.use("/testing",(req,res)=>{
     try{

@@ -13,7 +13,7 @@ const userAuth = async(req,res,next) => {
             })
         }
         jwt.verify(token,process.env.SECRET_KEY,(err,decoded)=>{
-            if(error){
+            if(err){
                 return res.staatus(401).json({
                     message: "Invalid or expired token",
                     error:true,
@@ -32,3 +32,4 @@ const userAuth = async(req,res,next) => {
     }
 }
 
+module.exports = userAuth;

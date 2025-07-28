@@ -34,6 +34,10 @@
     align-items: center;
     background-color: white;
     border-radius: 12px;
+    cursor: pointer;
+}
+.sidebar-footer label{
+    cursor: pointer;
 }
 .sidebar-footer img{
     height:20px;
@@ -60,6 +64,10 @@
     padding:10px;
     transition: 0.3s all;
     cursor: pointer;
+}
+#box-active{
+    background-color:#42476c ;
+
 }
 .session-box:hover{
     transition: 0.3s all;
