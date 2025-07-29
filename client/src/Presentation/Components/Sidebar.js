@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 import { deleteSession } from '../../Application/Services/Api';
-const Sidebar = ({setdata,data,sessionId,clearAll}) =>{
+const Sidebar = ({setdata,setloading,data,sessionId,clearAll}) =>{
     const navigator = useNavigate();
     const [sessions,setSessions] = useState([]);
     const HandleDelete = async (id)=>{
@@ -16,9 +16,12 @@ const Sidebar = ({setdata,data,sessionId,clearAll}) =>{
         if(response){
 
             if(id===sessionId){
+                setloading((prev)=>{return true});
                 navigator("/sessions")
+                setloading((prev)=>{return false});
             }
             else{
+                setloading((prev)=>{return true});
                 setdata((prev)=>{
                     const newArr = [...prev];
                     newArr.filter((item)=>{
@@ -26,6 +29,8 @@ const Sidebar = ({setdata,data,sessionId,clearAll}) =>{
                     })
                     return newArr;
                 })
+                setloading((prev)=>{return false});
+
             }
         }
         }catch(error){
@@ -44,8 +49,8 @@ const Sidebar = ({setdata,data,sessionId,clearAll}) =>{
             <div className="sidebar-body">
                 {sessions.map((session,index)=>{
                     return (
-                        <div onClick={()=>{
-                            navigator("/sessions/"+session._id);
+                        <div onClick={async ()=>{
+                            await navigator("/sessions/"+session._id);
                         }} className="session-box" id={sessionId==session._id ? "box-active" : null}>
                             <div className="session-head">
                                 <h3>{session?.sessionName &&  session.sessionName.length>15 ? session.sessionName.substring(0,15)+"..." : session.sessionName+"..."}</h3>
