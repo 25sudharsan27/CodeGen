@@ -5,6 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from '../Components/Sidebar';
 import userlogo from '../Assets/userimage.svg';
 import maxsize from '../Assets/maxsize.svg';
+import messagelogo1 from '../Assets/messagelogo1.svg';
+
 import { SandpackPreview, SandpackProvider, SandpackCodeEditor, SandpackLayout } from "@codesandbox/sandpack-react";
 import { atomDark } from "@codesandbox/sandpack-themes";
 
@@ -290,7 +292,7 @@ const Session = () => {
                 (
                   chatHistory.length==0 ? 
                     <div className="newchat-container" >
-                      <h1>New Chat</h1>
+                      <h1><img src={messagelogo1} style={{height:"30px"}} alt="messagelogo"/> New Chat</h1>
                       <h3>Generate Single page component and Enjoyyy</h3>
                     </div>
                   :
