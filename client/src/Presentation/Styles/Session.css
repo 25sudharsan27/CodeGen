@@ -205,7 +205,9 @@
     color:#4a507f;
 }
 
-
+.sidebar-button{
+    display:none;
+}
 
 
   @media screen and (max-width:1000px) {
@@ -228,6 +230,7 @@
         width:100%;
     }
     .sidebar-button{
+        display:block;
         border:none;
         background-color: transparent;
         position: fixed;
