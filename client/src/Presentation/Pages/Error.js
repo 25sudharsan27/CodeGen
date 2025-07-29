@@ -1,7 +1,7 @@
 const Error = ()=>{
     return (
         <div>
-            404 Error Page
+            404 Page Found
         </div>
     )
 }

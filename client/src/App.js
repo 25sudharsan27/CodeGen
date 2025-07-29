@@ -4,18 +4,18 @@ import Login from './Presentation/Pages/Login';
 import  SignUp  from './Presentation/Pages/Signup';
 import Session from './Presentation/Pages/Session';
 import Sessions from './Presentation/Pages/Sessions';
+import Error from './Presentation/Pages/Error';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Login/>} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/sessions/:sessionId" element={<Session/>}/>
         <Route path="/sessions" element={<Session/>}/>
-        <Route path="/session/:sessionId" element={<Sessions/>}/>
-        <Route path="/*" />
+        <Route path="/*" element={<Error/>}/>
       </Routes>
     </BrowserRouter>
   );

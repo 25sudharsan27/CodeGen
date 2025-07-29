@@ -16,6 +16,8 @@ import Model from '../Components/Model';
 import { getSessionDetail, getSessions, handlePrompt, userLogOut } from '../../Application/Services/Api';
 import parseToJSX from '../../Application/Services/Parsing';
 
+
+
 const Session = () => {
   const navigator = useNavigate();
   const currentPromptRef = useRef();
