@@ -180,5 +180,59 @@
     opacity: 0.5;
     pointer-events: none;
     cursor: not-allowed;
+}
+ 
+.newchat-container{
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.newchat-container h1{
+    font-family: 'Poppins', sans-serif;
+    font-size:30px;
+    margin:0px;
+    color:#202336;
+}
+.newchat-container h3{
+    font-family: 'Poppins', sans-serif;
+    font-size:14px;
+    color:#4a507f;
+}
+
+
+
+
+  @media screen and (max-width:1000px) {
+    .your-body{
+        flex-direction: column;
+        box-sizing: border-box;
+    }
+    .file-card{
+        padding:10px;
+        height:400px;
+        width:60vw;
+    }
+   
   }
-  
+
+  @media screen and (max-width:768px) {
+    .file-card{
+        padding:10px;
+        height:400px;
+        width:100%;
+    }
+    .sidebar-button{
+        border:none;
+        background-color: transparent;
+        position: fixed;
+        left:35px;
+
+    }
+    .sidebar-button img{
+        height:25px;
+
+    }
+  }

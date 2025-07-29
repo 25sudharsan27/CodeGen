@@ -16,12 +16,13 @@ import Model from '../Components/Model';
 import { getSessionDetail, getSessions, handlePrompt, userLogOut } from '../../Application/Services/Api';
 import parseToJSX from '../../Application/Services/Parsing';
 import UniqueLoadingComponent from '../Components/LoadingComponent';
-
+import sidepanelimage from '../Assets/sidepanel.svg';
 
 
 const Session = () => {
   const navigator = useNavigate();
   const currentPromptRef = useRef();
+  const [hidesidebar, sethideSideBar] = useState(true);
   const [disableButton, setdisableButton] = useState(false);
   const [bodyloading, setbodyLoading] = useState(false);
   const [sessionsData, setsessionsData] = useState([]);
@@ -160,20 +161,20 @@ const Session = () => {
 
   const HandleDownload = (jsx) => {
     const fileContent = typeof jsx === "string" ? jsx : jsx.toString();
-  
+
     const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
-  
+
     const a = document.createElement("a");
     a.href = url;
-    a.download = "Component.jsx"; // Change file name as needed
+    a.download = "Component.jsx";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-  
+
     URL.revokeObjectURL(url);
   };
-  
+
 
   const creatingNewSession = async () => {
     const prom = currentPromptRef.current.value;
@@ -247,6 +248,7 @@ const Session = () => {
 
 
   const clearAll = () => {
+    sethideSideBar(true);
     setChatHistory([]);
   }
   const HandleLogOut = async () => {
@@ -270,9 +272,10 @@ const Session = () => {
   return (
     <div className="page" id="session-page">
       <div className="session-container">
-        <Sidebar setdata={setsessionsData} setloading={setbodyLoading} data={sessionsData} sessionId={sessionId} clearAll={clearAll} />
+        <Sidebar setdata={setsessionsData} setloading={setbodyLoading} hidesidebar={hidesidebar} sethideSideBar={sethideSideBar} data={sessionsData} sessionId={sessionId} clearAll={clearAll} />
         <div className="session-right">
           <div className="session-nav">
+            <button className="sidebar-button" onClick={() => { sethideSideBar(false) }}><img src={sidepanelimage} alt="user logo" /></button>
             <img src={userlogo} alt="user logo" />
             <button onClick={HandleLogOut} className="input-button" >Logout</button>
           </div>
@@ -284,6 +287,13 @@ const Session = () => {
                 :
 
                 !sessionId ?
+                (
+                  chatHistory.length==0 ? 
+                    <div className="newchat-container" >
+                      <h1>New Chat</h1>
+                      <h3>Generate Single page component and Enjoyyy</h3>
+                    </div>
+                  :
                   (
                     chatHistory.length > 0 && chatHistory.map((chat, index) => {
                       return (
@@ -302,6 +312,8 @@ const Session = () => {
                       )
                     })
                   )
+
+                )
                   :
                   chatHistory.map((chat, index) => {
                     return (
@@ -328,7 +340,7 @@ const Session = () => {
                           <div className="your-body">
                             <div className="file-card">
                               <div className="file-card-header">
-                                <h3>{chat.componentCode[chatsfileindex[index]]?.filename}</h3>
+                                {/* <h3>{chat.componentCode[chatsfileindex[index]]?.filename}</h3> */}
                                 <div className="file-card-header-right">
                                   <button onClick={() => { HandleDownload(chat.componentCode[chatsfileindex[index]]?.jsx) }} className="file-card-button" >Download</button>
                                   <button onClick={() => { HandlePrevCard(index) }} className="file-card-button">Prev</button>

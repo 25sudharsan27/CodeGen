@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 import { deleteSession } from '../../Application/Services/Api';
-const Sidebar = ({setdata,setloading,data,sessionId,clearAll}) =>{
+const Sidebar = ({setdata,setloading,hidesidebar,sethideSideBar,data,sessionId,clearAll}) =>{
     const navigator = useNavigate();
     const [sessions,setSessions] = useState([]);
     const HandleDelete = async (id)=>{
@@ -41,16 +41,18 @@ const Sidebar = ({setdata,setloading,data,sessionId,clearAll}) =>{
         setSessions(data);
     }, [data]);
     return (
-        <div className="sidebar-container">
+        <div id={hidesidebar? "hide-sidebar" : null} className="sidebar-container">
             <div className="sidebar-header">
                 <img src={messagelogo} alt="messagelogo" />
                 <label>Talks</label>
+                <button onClick={()=>{sethideSideBar(true)}}  className="file-card-button">Close</button>
             </div>
             <div className="sidebar-body">
                 {sessions.map((session,index)=>{
                     return (
                         <div onClick={async ()=>{
                             await navigator("/sessions/"+session._id);
+                            sethideSideBar(true);
                         }} className="session-box" id={sessionId==session._id ? "box-active" : null}>
                             <div className="session-head">
                                 <h3>{session?.sessionName &&  session.sessionName.length>15 ? session.sessionName.substring(0,15)+"..." : session.sessionName+"..."}</h3>

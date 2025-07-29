@@ -90,5 +90,73 @@
     font-family: 'Poppins', sans-serif;
     font-size:10px;
     font-weight:400;
+    color:#adadad;
     margin:0px;
 }
+
+@media screen and (max-width: 768px) {
+    #hide-sidebar{
+        display:none;
+    }
+    .sidebar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      max-height: 100vh;
+      padding: 15px 10px;
+      gap: 10px;
+      z-index: 999;
+      border-radius: 0;
+      flex-direction: column;
+      background-color: #202336;
+    }
+  
+    .sidebar-header {
+      justify-content: center;
+      gap: 10px;
+    }
+  
+    .sidebar-header label {
+      font-size: 18px;
+      text-align: center;
+    }
+  
+    .sidebar-footer {
+      width: 100%;
+      justify-content: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    .sidebar-body {
+      overflow-y: auto;
+      max-height: calc(100vh - 160px); 
+    }
+  
+    .session-head h3 {
+      font-size: 14px;
+    }
+  
+    .session-head p5 {
+      font-size: 9px;
+    }
+  
+    .chat-btn {
+      font-size: 14px;
+    }
+  
+    .session-box {
+      padding: 8px;
+    }
+  
+    .sidebar-footer img {
+      height: 18px;
+    }
+  
+    .sidebar-header img {
+      height: 22px;
+    }
+  
+  }
+  
