@@ -80,6 +80,14 @@
     border-radius:8px;
     border:none;
     padding:5px 10px;
+    cursor: pointer;
+    transition:0.3s all;
+}
+.file-card-button:hover{
+    transition: 0.3s all;
+    font-family: 'Poppins', sans-serif;
+    color:white;
+    background-color: #1d1f2f;
 }
 .file-card-max-button{
     background-color: #75F7CC;

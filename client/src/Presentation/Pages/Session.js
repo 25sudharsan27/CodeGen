@@ -158,6 +158,23 @@ const Session = () => {
 
   }
 
+  const HandleDownload = (jsx) => {
+    const fileContent = typeof jsx === "string" ? jsx : jsx.toString();
+  
+    const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+  
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Component.jsx"; // Change file name as needed
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  
+    URL.revokeObjectURL(url);
+  };
+  
+
   const creatingNewSession = async () => {
     const prom = currentPromptRef.current.value;
     console.log(prom);
@@ -313,6 +330,7 @@ const Session = () => {
                               <div className="file-card-header">
                                 <h3>{chat.componentCode[chatsfileindex[index]]?.filename}</h3>
                                 <div className="file-card-header-right">
+                                  <button onClick={() => { HandleDownload(chat.componentCode[chatsfileindex[index]]?.jsx) }} className="file-card-button" >Download</button>
                                   <button onClick={() => { HandlePrevCard(index) }} className="file-card-button">Prev</button>
                                   <button onClick={() => { HandleNextCard(index) }} className="file-card-button" >Next</button>
                                   <button className="file-card-max-button" onClick={() => { HandleAddPage(chat.componentCode[chatsfileindex[index]]); openModel(pages.length) }}><img src={maxsize} alt="maxsize" /></button>

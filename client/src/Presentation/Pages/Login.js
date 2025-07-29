@@ -51,6 +51,12 @@ const Login = ()=>{
                         or
                         <a href="/signup" className="input-link">create a new account ?</a>
                     </div>
+                    <div >
+                        <div style={{display:'flex',gap:"20px"}}>
+                            <label className="input-link"><b>Email</b> : sudharsan2@gmail.com </label>
+                            <label className="input-link"><b>Password</b> : 123456789a</label>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
